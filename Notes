@@ -12,6 +12,7 @@ in CDS Disadvantage:
     
 ******************************************************************************************************************************
 ******************************************************************************************************************************
+all functionality not possible in CDS view to over cone this we will go with the AMDP FUnctions
 Table Function: order by<-- cds view consuming in AMDP <-- DBView(CDS SQL VIEW NAME)
 CLASS zysat_amdp_1 DEFINITION
   PUBLIC
