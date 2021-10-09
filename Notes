@@ -1,7 +1,13 @@
 
 in CDS Disadvantage:
+1.
 -- OrderBY is not possible in CDS View
     -- to over come this we will go with TABLE FUNCTIONS. <-- order by achieveing...
+
+
+2. @DefaultAggregation: #<SUM/MAX/MIN/..>
+--  in normal CDS View it is not work then we can use it sum(<col>)... then it will work. <-- this will take care about SADL
+--  in Analytical Query, @DefaultAggregation will work. <-- taken care by ANALYTICAL ENGINE
     
     
     
