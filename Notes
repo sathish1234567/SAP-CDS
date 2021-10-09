@@ -1,0 +1,7 @@
+
+in CDS Disadvantage:
+-- OrderBY is not possible in CDS View
+    -- to over come this we will go with TABLE FUNCTIONS. <-- order by achieveing...
+    
+    
+    
