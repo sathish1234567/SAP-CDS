@@ -1,0 +1,53 @@
+all functionality not possible in CDS view to over cone this we will go with the AMDP FUnctions
+Table Function: order by<-- cds view consuming in AMDP <-- DBView(CDS SQL VIEW NAME)
+CLASS zysat_amdp_1 DEFINITION
+  PUBLIC
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES : if_amdp_marker_hdb.
+    TYPES:
+      BEGIN OF ty_tcode,
+        tcode TYPE agval,
+        ttext TYPE ttext_stct,
+        role  TYPE agr_name,
+        rtext TYPE agr_title,
+      END OF ty_tcode,
+      tt_tcode     TYPE TABLE OF ty_tcode,
+      tt_zdktest01 TYPE TABLE OF zdktest01.
+
+    METHODS : get_t_code_role_matrix
+      IMPORTING VALUE(lv_where)         TYPE string
+      EXPORTING
+                VALUE(ex_it_tcode_role) TYPE tt_zdktest01.
+    CLASS-METHODS: concdsviewwithsort FOR TABLE FUNCTION zxx_cds_agr_tf.
+
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zysat_amdp_1 IMPLEMENTATION.
+  METHOD concdsviewwithsort BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT
+                            OPTIONS READ-ONLY
+                            USING ZXX_CDS_AGR_V. ---(CDS SQL VIEW NAME)
+       return select * from ZXX_CDS_AGR_V
+                        ORDER BY carrid, connid;
+  ENDMETHOD.
+
+
+  METHOD  get_t_code_role_matrix BY DATABASE PROCEDURE
+                                    FOR HDB
+                                    LANGUAGE SQLSCRIPT
+                                    OPTIONS READ-ONLY
+                                    USING zdktest01.
+
+    DECLARE lv_mandt VARchar( 3 );
+    lv_mandt = session_context( 'CLIENT' );
+    it_tcode_role = select * from zdktest01 where mandt = :lv_mandt;
+    ex_it_tcode_role = APPLY_FILTER ( :it_tcode_role, :lv_where );
+
+  ENDMETHOD.
+ENDCLASS.
