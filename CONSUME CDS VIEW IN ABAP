@@ -1,0 +1,23 @@
+1. Create CDS VIEW:
+
+@AbapCatalog.sqlViewName: 'ZSQL_BASIC_VIEW'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'CDS View type #BASIC'
+define view ZCDS_BASIC_VIEW as select from sflight {
+ //sflight 
+ --key mandt, 
+ key carrid, 
+ seatsmax_b, 
+ seatsocc_b, 
+ seatsmax_f, 
+ seatsocc_f
+}
+
+2. Consume CDS View IN  ABAP
+REPORT zconsume_cds.
+
+Select * from ZCDS_BASIC_VIEW into table @data(lt_itab).
+
+cl_demo_output=>display_data( lt_itab ).
