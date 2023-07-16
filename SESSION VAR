@@ -1,0 +1,9 @@
+SESSION VAR:
+______________
+
+EX: 
+fldate <= $session.system_date
+spras = $session.system_language
+user = $session.user
+client = $session.client
+
