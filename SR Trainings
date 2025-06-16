@@ -1,0 +1,11 @@
+CDS Views: 
+- Core data services
+- A view which we will creata a DB layer and in this we can perform all slicing of data and even we can also perform aggregations/ all conditional operator and what ever you want 
+  you can perform on CDS views.
+- Here entire code pusing to the Data base and not in the application layer
+
+ABAP CDS View Class-1
+When we create the CDS views, SAP has offered two types of Views.
+1. DDL sql View : A view which will be created in SE11 or applcation layer abap.
+2. CDS entity: A view which is created into the DB layer.
+  
