@@ -1,0 +1,17 @@
+How to CDS View for atable?
+_____________________________
+4 -ways we can able to find
+
+1. Where use list
+2. custom program
+3. name check( i_mat* )
+4. Git hub***<-- this is new one people does not know.
+
+where use list:
+______________
+1. Go to SE11 --> provide table name- VBAK --> click on where used list --> deselect all ---> now select the data definitions --> click on ok.
+   Here you can able to see all the data definitions, that has been created on top of this CDS view.
+
+   main disadvantages : some of the cds views are not show over here.
+
+2. 
