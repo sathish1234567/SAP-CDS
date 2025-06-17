@@ -4,6 +4,27 @@ CDS Views:
   you can perform on CDS views.
 - Here entire code pusing to the Data base and not in the application layer
 
+How to check which system are we working?
+____________________________________________
+Using CL_COS_UTILITIES
+  methods - |_IS_S4H_MANAGED_CLOUD
+            |_IS_S4H_ON_PREMISE
+            |_IS_S4H_PUBLIC_CLOUD
+
+What is Hana public cloud/private cloud/ on-premise?
+______________________________________________________
+Public clound:
+-SAP is the cloud provider and Manage the software and software updated are controlled by SAP time lines.
+-Many applications like ARiba/Hybris/Successfactors are public cloud.
+
+HANA Private/Managed Cloud– SAP as a cloud provider manages the software with managed services approach. It is a private cloud that enables customers to run core application on cloud on HANA platform.
+
+HANA On-Premise–  This option where software is installed and run by the customer as S4 HANA offers this option.
+
+From a technical point of view, to check which option is activated in the system, these are controlled by few  business functions.
+
+Business Functions: SIMPLIFY_PUBLIC_CLOUD, SIMPLIFY_MANAGED_CLOUD,  SIMPLIFY_ON_PREMISE
+
 ABAP CDS View Class-1
 When we create the CDS views, SAP has offered two types of Views.
 1. DDL sql View : A view which will be created in SE11 or applcation layer abap.
