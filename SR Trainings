@@ -53,7 +53,31 @@ DEFINE VIEW <<entity_name>> as select from
 
 What is CDS table function?
 _____________________________
+- These are table functions that are implemented natively on the data base and this is called in CDS View.
+- Table function supports code push down capablities in ABAP CDS.
+- A CDS Table Function is defined using statement DEFINE TABLE FUNCTION . In contrast to the CDS views , 
+  the CDS table functions can be implemented by using native SQL . The implementation is done within AMDP method of the AMDP class and is managed as an AMDP function by the AMDP framework in the DB.
 
+Ex:
+DEFINE TABLE FUNCTION TABLE_FUNCTION_NAME1
+WITH PARAMETERS carrid : s_Carrid....
+returns{ ..... } implemented by method CL_EXAMPLE_AMDP=>GET_FLIGHTS;
+
+CLASS CL_EXAMPLE_AMDP DEFINITION PUBLIC.
+ public section.
+   interfaces : IF_AMDP_MARKER_HDB.
+   class-methods: get_flights for table function TABLE_FUNCTION_NAME1.
+  ...................
+  ...................
+ENDCLASS>
+
+CLASS CL_EXAMPLE_AMDP IMPLEMENTATION.
+  methods get_flights by database function for HDB....
+      ....
+      ....
+  endmethod.
+ENDCLASS.
+ENDCLASS.
 
 
 ABAP CDS View Class-1
