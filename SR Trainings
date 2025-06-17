@@ -25,6 +25,37 @@ From a technical point of view, to check which option is activated in the system
 
 Business Functions: SIMPLIFY_PUBLIC_CLOUD, SIMPLIFY_MANAGED_CLOUD,  SIMPLIFY_ON_PREMISE
 
+What is ABAP CDS?
+__________________
+- ABAP CDS provides a framework for defining and consuming semantic data models on the DB of the ABAP AS. The data models are based on data definition language[DDL] and data control language[DCL]. 
+
+What are ABAP CDS Entities?
+____________________________
+ABAP CDS entities are models, based on the DDL and are managed by ABAP Dictonary.
+CDS Entities are :
+1. CDS View
+2. ABAP CDS Table Function
+
+What is ABAP CDS View?
+________________________
+- A CDS View is defined on the existing DB tables/Views/Other CDS Views in ABAP Dictionary using specific DDL statements-DEFINE VIEW.
+- It serves to define the structure of the CDS Database View and represents a project on several DB tables and Views in abap dictionary.
+- A CDS view associated with the CDS Data Base View and CDS entity and both are part of same name space. so, different name must be assigned to the database view and to the cds entity.
+
+When a CDS view activated it creates the following objects 
+1. Actual CDS entity.
+2. CDS Database view.
+
+@AbapCatalog.sqlViewName:'SQL_VIEW' -->Name of the CDS database view.
+DEFINE VIEW <<entity_name>> as select from 
+  |_ here <<entity_name>> -->Name of the CDS entity
+
+
+What is CDS table function?
+_____________________________
+
+
+
 ABAP CDS View Class-1
 When we create the CDS views, SAP has offered two types of Views.
 1. DDL sql View : A view which will be created in SE11 or applcation layer abap.
