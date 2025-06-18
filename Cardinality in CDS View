@@ -1,0 +1,23 @@
+CDS VIEW Cardinality:
+_____________________
+1. Cardinality relation ship between the source and association of the target tables/ cds views/ table functions/ SQL Views
+   annd included in the defintions of the associations.
+2. Association cardinality defines [min..max].
+3. cardinality applies only to the target table/target view /target sql.
+4. minimum and maximum only applicable to the target only not for the source.
+
+cardinality ------------reacords association target
+cardinality ------------ minmum-------------maximum
+[1]         ------------    0  -------------   1                    - number of entries in target can be 0 or 1
+[0..1]      ------------    0  -------------   1                    - number of entries in target can be 0 or 1
+[1..1]      ------------    1  -------------   1                    - number of entries in target can be 1 or 1( only one record )
+[0..*]      ------------    0  -------------   unlimited            - number of entries in target can be 0 or many
+[1..*]      ------------    1  -------------   unlimited            - number of entries in target can be 1 or many (atleast one record)
+not specified ----------    0  -------------   1 ( defualt logic)   - number of entries in target can be 0 or 1
+
+
+mainly used for semantic of the data model, cardinality can't be validate. if you mention wongly we will get the syntax check warning.
+cardinality is the optional--> if you not provide system will treat as default means 0..1 (0 is to 1 )
+minimum can't be use with the star and maximum can't be the zero. means[*..0] - can't accept.
+
+
