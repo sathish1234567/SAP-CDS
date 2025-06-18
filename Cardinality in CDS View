@@ -94,4 +94,41 @@ from ZSY_PO_VENDOR <-- cds view name
 into table @data(itab).
 
 
+Two level drill down Association:
+___________________________________
+Ex:
+View1:
+@AbapCatalog.sqlViewName:'ZSYPURCHASS'
+@EndUserText.label:'Po with Items'
+define view zsy_purchase_Assoc
+as select from ekko
+association [1..*] to ekpo as _Item on ekko.ebeln = _item.ebeln
+{
+key ebeln,
+ekorg,
+lifnr,
+_item
+}
+
+View2:
+@AbapCatalog.sqlViewName:'ZSYPURCHASS'
+@EndUserText.label:'Po with Items'
+define view zsy_purchase_Assoc
+as select from lfa1
+association [1..*] to zsy_purchase_Assoc as _zpohead on lfa1.lifnr = _zpohead.lfnr
+{
+key lifnr,
+name1,
+land1
+_zpohead
+
+}
+Output:
+basic list --> lifnr data
+                  |_1 st drill down po header for corresponding vendors.
+                           |_ 2nd drill down is line items for corresponding po nos.
+
+
+
+
 
