@@ -20,4 +20,78 @@ mainly used for semantic of the data model, cardinality can't be validate. if yo
 cardinality is the optional--> if you not provide system will treat as default means 0..1 (0 is to 1 )
 minimum can't be use with the star and maximum can't be the zero. means[*..0] - can't accept.
 
+Associations:
+_____________
+1. What are Associations?
+2. What is the difference between the Associations and Joins?
+3. Why is Associations called Join on demand or lazy join?
+4. cardinality in Associations?
+5. Types of Assocations- Exposed and Ad-hoc?
+6. How to use the CDS Associations in ABAP code?
+
+What is Assocaitions in CDS?
+_______________________________
+- it is relationship between the Data model entoties. and it is not just data join. It is a relationship/conceptual wise.
+- SAP recommends to use the Associations instead of joins because they are closure to conceptual thinking.
+-  JOIN Vs Assocaiations: 
+      - Both are working on SQL join only... 
+     - Join is tight coupling( required or not.. it will join the both tables )
+     - Association - loose coupling- when ever required only join will happen.. on demand will work.
+     - in Association, actual join is created when the association is used in a path expression( called / triggered ).
+     - Association will define using the "association" keyword.
+     - Start the Association name with _<association name> that is different from stadard fields in CDS View.
+      Ex: _salesItems
+          _poItems
+
+   Ex: 
+   define view ZI_SALESORDER
+   as select from vbak association [0..*] to ZI_salesItem as _Item
+   on $project.SalesOrder = _Item.SalesOrder 
+   {
+   key f1,f2, _item     --> called as Exposed Associations
+   }
+  or
+   
+   {
+   key f1, key _item.f2 ... --> called as Ad-hoc Associations 
+   }
+here $projection- means- selected fields in the view ZI_SALESORDER.
+
+Types of Associations in CDS?
+______________________________
+2 types:
+1. AD-HOC Associations ( if association fields are used in the view elements called adhoc associations )- tight coupling
+AD-HOC Assocaitaions: - always join will happen when execute the CDS views.
+Ex: 
+define view ZMM_1_MAT as 
+select from mara as m
+association to marc as _plant 
+on m.mara = _plant.mara
+{
+key matnr,
+key _plant.werks,
+_plant.mmsta
+}
+2. Exposed Associations - Expose total assocaitaion with out using any fields in view elemetns.- loose coupling( Join is the demand )
+
+Ex: 
+define view ZMM_1_MAT as 
+select from mara as m
+association to marc as _plant 
+on m.mara = _plant.mara
+{
+key matnr,
+_plant
+}
+once display the basic list --> roght click any row and select the "FOLLOW Association" --> able to display the detail list.
+How to use/consume the Associations in ABAP code?
+_________________________________________________
+in ABAP use the \_<association name>-<field name> in field selection in select query.
+\_<association1>\_<association2>-fieldname in the same cds view. here association-2 available in Association1
+Ex
+select lifnr, name,\_ZPOHead-ebeln, \_ZPOHead\_ZPOItem-ebelp
+from ZSY_PO_VENDOR <-- cds view name
+into table @data(itab).
+
+
 
