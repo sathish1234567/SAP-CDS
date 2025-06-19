@@ -1,0 +1,30 @@
+Simplified Tables in FICO- S4HANA
+
+1. Universal Jounal is the financial data, which are simplified in S4HANA using simplified tables.
+- No change in master table majorly.
+- most of the transactional tables are replaced with the ACDOCA table.
+- in first version -simplefinance- ACDOCA table has introduced.
+- ACDOCA table called in FInance- Universal Journal table
+- SAP ACDOCA combines multiple traditional tables into a simple unified table -ACDOCA such as
+  INDEX table: BSIS, BSAS, BSID, BSAD, BSIK, BSAK, COEP, ANEA, ANLP, FAGLFLE, MLIT ETC.
+  (related receivable/payable/gl tables are there)
+  BSIS- GL Open items
+  BSAS- GL cleared Items
+
+  BSID- Customer Open Items
+  BSAD- Customer cleared Items
+
+  BSIK- Vendor Open items
+  BSAK- Vendor Cleared items.
+
+  COEP- Cost related
+
+  Asset line items tables:
+  ANEA-
+  ANEP-
+
+
+Total table like :
+FAGLFLEXT, COSP, COSS.
+
+in simple finance/s4 hana-> any record will fetch related finance- system will get it ACDOCA table only
