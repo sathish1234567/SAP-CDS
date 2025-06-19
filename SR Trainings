@@ -84,4 +84,42 @@ ABAP CDS View Class-1
 When we create the CDS views, SAP has offered two types of Views.
 1. DDL sql View : A view which will be created in SE11 or applcation layer abap.
 2. CDS entity: A view which is created into the DB layer.
-  
+
+in SAP HANA, its an open sourcei.e we can change the standard program. but in ECC, it will ask for an access key, where as in s4 it an open source it won't ask any access key .
+but we need to follow the SAP standards only.
+
+CDS Views:
+______________
+pushing the entire to the DB layer and get the resultant value.
+
+we have different types of cds views:
+1. define view: --> view which is created on a single table, where we will slice the data.
+2. View with joins: A view which is created on morethan one table
+    using inner join/ lefter outer/ right outer/ union/ union all.
+3. View with parameters: if i want an input parameter based on input values i need to provide the o/p also.
+4. View with association: associations are similar to the joins but it is lazy join whenever we are getting the field from that particular table.
+Ex: for A With B, Association on B, when we are getting the values from B table then only the join will work.
+Compares to the joins, Associations are very fast.
+suppose if you are associated with 20 tables, but you have used the few fields from 5 associations only in selection list so those are will join remaining associations tables
+will work with lazy join.
+5. CDS View extension: extends the standard cds view to accomdate with the custom fields.
+   1. CFL--> Custom Fields Applogic--> this is directly in FIORI APP.
+   2. Extended CDS View: 
+
+How to use the CDS View and How can we convert this CDS view into a OData Service.? --> Directly generating and URL for this CDS view.
+______________________________________________________________________________________
+
+6. VDE- Virtual Data Elements:
+    I want to call the FM inside the CDS View
+7. VDM- Virtual Data Models --> which we will used for FIORI Apps. but this we have used till SAP HANA 1809, from SAP HANA1909 SAP has introduced new a fiori app called as 
+    custom analytical query
+
+Note: Previously we will use the CDS View only for fetch the data from SAP system, with the advance technology like RAP and SAP BTP we can able to post the data into SAP system.
+      in RAP, CDS will convert into a root entity on this we will create a behaviour definition and behaviour implementation on this SAP will provide the CRUD operation to update/read data to SAP/From SAP.
+
+
+
+
+
+   
+
