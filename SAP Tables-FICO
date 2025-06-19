@@ -93,6 +93,30 @@ BSIS          -----  BSIS_DDL
 This table lists obsolete finance tables and their corresponding compatibility and data definition language (DDL) sources.
 
 
-        
+
+ACDOCA: The Universal Journal
+MATDOC Inventory Management:
+_________________________________
+SAP S/4HANA introduces MATDOC, a new inventory management system that eliminates over 26 tables present in SAP ECC. 
+Now, material documents are stored in MATDOC instead of MKPF or MSEG tables. 
+This removes redundancy and improves stock reporting efficiency.
+
+https://www.scribd.com/document/467140101/Tables-s4-Hana-1
 
 
+Let us understand the differences by looking at the table structures:
+
+VBUK and VBUP are still present in S/4 HANA but they are not filled when an order is created.
+The status fields have been added through append structure.
+Table Name	Description	        Append Name
+VBAK	      Sales Order Header	VBAK_STATUS
+VBAP	      Sales Order Item	  VBAP_STATUS
+LIKP	      Delivery Header	    LIKP_STATUS
+LIPS	      Delivery Item	      LIPS_STATUS
+VBRK	      Billing Document Header	VBRK_STATUS
+
+If any custom fields have been added to VBUP or VBUP tables in source system, they will have to be added to respective document tables in S/4 HANA system.
+An append field to the document header status table VBUK must be added to one or several of the document header tables VBAK, LIKP, or VBRK. This decision depends on which of the document types the respective field is relevant for.
+An append field to document item status table VBUP must be added to one or more of the document item tables VBAP or LIPS.
+
+From Simplification list : Elimination of status tables VBUK, VBUP: Status fields have been moved to the corresponding header and item tables - VBAK and VBAP for sales documents, LIKP and LIPS for deliveries, VBRK for billing documents.
