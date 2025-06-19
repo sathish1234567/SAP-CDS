@@ -1,0 +1,40 @@
+https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/sap-s-4hana-inventory-management-tables-new-simplified-data-model-nsdm/ba-p/13497469 
+The new data model in MM-IM with tables MATDOC and MATDOC_EXTRACT has been around for a while but there's still some questions about how both still co-exist with the old tables (MKPF, MSEG, MARD, etc.). This blog post is to clarify how the compatibility was maintained after the migration to this new data model.
+
+SAP ECC vs SAP S/4HANA MM-IM Data Model
+
+MATDOC table now contains both header and item data for material documents. Hybrid tables (e.g. MARC, MARD, etc.) still exist, but they only hold master data information. All stock information displayed during a select on those tables is calculated on the fly. 
+The MATDOC_EXTRACT table is used to speed up the summarization of MATDOC table during the on-the-fly calculation of stock figures:
+
+
+The CDS View is an ABAP entity written in DDL (Data Definition Language) SQL script. They are used in this scope to aggregate data from various sources into a single top view.
+
+Using MB80 transaction (provided by SAP Note 2542130) or ABAP Developer Tools in Eclipse, it is possible to check the DDL file that points to a view created in SE11 in the ABAP Catalog. For example, the CDS View for MARD is composed by:
+
+A Data Definition file: NSDM_DDL_MARD
+
+A Dictionary View: NSDM_V_MARD
+
+A Database Entity (at database level, only referenced by the DDL): NSDM_E_MARD
+
+
+The stock data in hybrid tables are redundant because the sum of all material document information returns the same data. For example, the quantity displayed in MARD-LABST for Unrestricted-Use Stock is now a result from the sum of all the material documents related to the data selected and calculated through the use of the NSDM_V_MARD view whenever the LABST field is consulted in MARD. If no stock information is required from those tables, a SELECT that fetches only master data information can be used with the special view V_Mxxx_MD created for this (e.g. V_MARD_MD).
+
+In summary, a SELECT * FROM MARD now performs the following steps:
+
+Access MARD to get the storage location material master data entities.
+
+Perform the aggregations on table MATDOC_EXTRACT to get the actual stock level.
+
+Join both results.
+
+CDS VIEW STACK
+                              NSDM_V_MARD
+                                    |
+--------------------------------------------------------------------------
+|                                                    |
+MARD                                          NSDM_V_MARD_DIFF
+                                                    |
+                                              NSDM_V_MARD_AGG
+                                                    |
+                                              MATDOC_EXTRACT
