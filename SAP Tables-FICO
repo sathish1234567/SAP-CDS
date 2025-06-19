@@ -28,3 +28,71 @@ Total table like :
 FAGLFLEXT, COSP, COSS.
 
 in simple finance/s4 hana-> any record will fetch related finance- system will get it ACDOCA table only
+
+in Real time process: The ACDOCA table financial reporting becomes faster and more efficient.
+it enables real-time analysis of financial data between 
+1.  FI-Asset Accounting 
+2.  General Ledger
+3.  Material Ledger
+
+No dependancy on batch processing.
+
+FI- tables:
+_______________
+ACDOCA/ADDOCP/ACDOCU
+ACDOCA- Universal Journal Entry Line Items table - BSEG also can be replaced with ACDOCA table
+ACDOCP- Plan Line items -->When we planning in any other module in the plans like there are possibility like we are doing planning from cloud analytical or some other tools.
+it will come to the SAP- ACDOCP table
+ACDOCU- this is the consolidation table.
+  |_Group general Entries
+
+Searching tables using - SE16T tcode in ERP( S4)
+___________________________________________________
+SE16T- central Access of Search function.
+|_Environmental Functions
+    |_SE16N
+    |_SE16H
+    |_SE16S
+    |_SE16SL --> use this option -->Execute
+        |_next screen
+            |_ purpose of search : Test
+            |_ Field Description: Purchase Order Number
+            |_ Search Value_1 : 123456789  
+            |_ execute
+                |_ Tables are displayed here:
+                      |_ACDOCA/BSEG/RSEG/EKKO/EKPO/EKKN/EKET/EKBE
+
+https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-members/ecc-tables-after-migration-to-s-4-hana-simple-finance/ba-p/13416671 
+SAP S/4 HANA(Simple Finance):
+____________________________________
+SAP Released SAP S/4 in 2015 named as ‘Smart Finance’ and later it changed the name to ‘Simple Finance(S-FIN)’ and thereafter it was renamed as ‘S/4 HANA Finance’. 
+S/4 HANA Finance provides a database table “ACDOCA”(Universal Journal) is which contains all the documents types from FI, CO, MM, SD, PP applications. 
+All the postings to these applications are written in single ACDOCA table (so it’s a replacement table for existing traditional tables like BKPF,BSEG etc). 
+This way system avoids data redundancy to a great extent.
+
+What if we still need to access traditional tables? The traditional tables from system are replaced by HANA CDS(Core Data Services) views, which will be referencing and fetching data from ACDOCA(Universal Journal table). 
+In this way SAP has ensured that the traditional tables are converted to database views so the existing programs using those as tables will not be impacted even after migration to S/4 HANA S-FIN. 
+There still might be a minimal need to align and re-adjust some ABAP syntaxes which can be easily analyzed by doing syntax checks.
+
+It will be user’s choice to either use ACDOCA or use CDS views to build reports/programs going forward after the migration. 
+In my next blog I will try to explain practical use cases for ACDOCA table vs CDS views, so stay tuned!
+
+Obsolete Tables and Compatibility Views:
+_________________________________________
+The data model in SAP S/4HANA has changed significantly, and the index and totals tables are obsolete. 
+These tables have been replaced by compatibility views to make sure that older custom programs will continue to work. Technically, 
+these tables are called core data services (CDS) views. 
+
+Obsolete Table-----  DDL Source
+BSAD          -----  BSAD_DDL
+BSAK          -----  BSAK_DDL
+BSAS          -----  BSAS_DDL
+BSID          -----  BSID_DDL
+BSIK          -----  BSIK_DDL
+BSIS          -----  BSIS_DDL
+This table lists obsolete finance tables and their corresponding compatibility and data definition language (DDL) sources.
+
+
+        
+
+
