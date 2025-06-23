@@ -118,10 +118,55 @@ ________________________________________________________________________________
 Note: Previously we will use the CDS View only for fetch the data from SAP system, with the advance technology like RAP and SAP BTP we can able to post the data into SAP system.
       in RAP, CDS will convert into a root entity on this we will create a behaviour definition and behaviour implementation on this SAP will provide the CRUD operation to update/read data to SAP/From SAP.
 
+Annotations: are nothing but library components.
+- Libraries are nothing but what action performed on CDS View, using annotations only we can define the purpose of the cds view.
 
 
+Class-2:
 
+Create CDS View:
 
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+vbeln,
+ernam,
+erdat,
+vkorg,
+vtweg,
+spart
+}
 
-   
+save and activate.. it will activate it with warning.
+Warning: Key field missing in selection list.
+key definitions of zvcdsview_with_one_Table and vbak are different, VBELN is missing in key of  zvcdsview_with_one_Table.
 
+shift + F1 --> pretty printer.
+
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+key vbeln ,
+ernam,
+erdat,
+vkorg,
+vtweg,
+spart
+}
+
+save and activate.. now you will not get any warnings..
+
+F8--> display the data in preview.
+
+Now cross check sql view created or not in Se11.
+Sql view name:ZSQLView_Table: --> go to se11 --> select view radio button --> provide sql name:ZSQLView_Table and display. here it is name as CDS Database view/DDL SQL View also.
+
+Question:
+in which table i can find the relation ship between the cds entity and CDS database view?- DDLDEPENDENCY
+-  Search with CDS entity in DDL source( zvcdsview_with_one_table ) in DDLDEPENDENCY, it will display 2 objects-VIEW object- DDL SQL VIEW and STOB( Structured Object)
+
+Operations in CDS view:
+_______________________
+1. 
