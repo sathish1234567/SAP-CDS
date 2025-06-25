@@ -252,6 +252,8 @@ _____________________
 Concatenate:  23:00
 ______________
 In CDS View by default we can able to concatenate two fields at a time.
+- concatenate- concatenate the arguments without space- 
+- concat(arg1, arg2).
 - if i need to concatenate morethan 2 fields , so i need to concatenate morethan one time .
 - in CDS View we need to use a keyword for concatenate is 'CONCAT'.
 https://youtu.be/5gqlD2D9FLw?list=PLnVjDuttPTAZyF3YrHfIV0UoOz_tLZ3DM&t=1446 
@@ -284,4 +286,17 @@ activate and run- f8
 output for sales area.
 vkorg - - vtweg - - spart - - sales_Area
 SGSS  - - SG    - - SG    - - SGSSSGSG
+
+Concatenate With Space:
+_______________________
+- I want to concatenate with spaces use the keyword as concat_with_space.
+-syntax: concat_with_space( arg1, arg2, space_cnt )
+- here space_cnt- number of spaces are required between the arg1 and arg2.
+- it is similar as concate.
+- it is also accepts two parameters.
+
+Ex: concate_with_space(vkorg, concate_with_space(vtweg,spart,1), 1) as sales_Area_space
+
+sales_Area_space
+SGSS SG SS
 
