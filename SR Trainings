@@ -169,4 +169,87 @@ in which table i can find the relation ship between the cds entity and CDS datab
 
 Operations in CDS view:
 _______________________
-1. 
+1. Concatenate
+2. Triming
+3. Adding numbers
+4. conditional( cond) opertor
+5. Casting operator
+6. Currency conversion operator
+7. Data conversion
+
+
+Session Variables:
+___________________
+In classical ABAP, sy-uname, sy-datum--- those are not work in CDS View, in lace of that we will use the session variables
+in CDS View, whenever we want to use any session variables $session.<system vraibales?
+1. $session.client --> current system client
+2. $session.system_Date --> current date
+3. $session.system_language --> logon language
+4. $session.user --> Logged on user
+5. $session.user_DAte -->
+6. $session.user_timezone -->
+
+Ex: 
+
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+key vbeln ,
+ernam,
+erdat,
+vkorg,
+vtweg,
+spart,
+$session.user as user,
+$session.system_Date as date 
+}
+
+Output
+__________
+vbeln  -----  ERNAM ---- ERDAT      ---- VKORG ---- VTWEG ---- SPART ---- USER ---- DATE
+00001  -----  SATIS ---- 2022-01-23 ---- 1000   ---- 01    ---- 01 ---- SATHISH ---- 2025-06-25
+
+
+End user text Provide:
+____________________________
+Whenever we are exposing the CDS View to outside the system/fiori app, we need to provide meaningful description required for desired fieds in CDS VIEW
+-For this we need to use the annotation called endusertext.
+-Anotation : @EndUserText.label : '<fields description> -->fieldcatalog-seltext_m/s/l
+             @EndUserText.quickInfo : '<<provide descirption>'
+
+Ex: @EndUserText { label : 'Executed User'
+                   quickInfo : 'Executed User' }
+ or for Individual
+@EndUserText.label : 'Executed User'
+@EndUserText.quickInfo : 'Executed User'
+
+Ex: with CDS View.
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+key vbeln ,
+ernam,
+@EndUserText { label : 'Executed User'
+                   quickInfo : 'Executed User' }
+$session.user as user,
+
+@EndUserText.label : 'Current Date'
+@EndUserText.quickInfo : 'Current Date'
+$session.system_Date as date 
+}
+ACTIVATE + F8( execute )
+When you activate this and we can't able to see this description in the eclipse outline and output also.
+output will show in the form of field names or aliases.
+in SQL View also we can't able to see the description for date/user- only alias name will appears
+
+@EndUserText -- only visible in FIORi apps.
+
+
+String Operations:
+_____________________
+Concatenate:  23:00
+https://youtu.be/5gqlD2D9FLw?list=PLnVjDuttPTAZyF3YrHfIV0UoOz_tLZ3DM&t=1446 
+
+
