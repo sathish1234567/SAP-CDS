@@ -250,6 +250,38 @@ in SQL View also we can't able to see the description for date/user- only alias 
 String Operations:
 _____________________
 Concatenate:  23:00
+______________
+In CDS View by default we can able to concatenate two fields at a time.
+- if i need to concatenate morethan 2 fields , so i need to concatenate morethan one time .
+- in CDS View we need to use a keyword for concatenate is 'CONCAT'.
 https://youtu.be/5gqlD2D9FLw?list=PLnVjDuttPTAZyF3YrHfIV0UoOz_tLZ3DM&t=1446 
 
+req: My requirement is to concatenate vkorg/vtweg/spart 
+
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+key vbeln ,
+vkorg,
+vtweg,
+spart
+ernam,
+@EndUserText { label : 'Executed User'
+                   quickInfo : 'Executed User' }
+$session.user as user,
+
+@EndUserText.label : 'Current Date'
+@EndUserText.quickInfo : 'Current Date'
+$session.system_Date as date ,
+
+@EndUserText.label : 'sales area'
+@EndUserText.quickInfo : 'sales area'
+concat(vkorg, concat(vtweg, spart)) as sales_Area
+}
+activate and run- f8
+
+output for sales area.
+vkorg - - vtweg - - spart - - sales_Area
+SGSS  - - SG    - - SG    - - SGSSSGSG
 
