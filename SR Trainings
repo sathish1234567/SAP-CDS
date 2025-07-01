@@ -52,6 +52,7 @@ DEFINE VIEW <<entity_name>> as select from
   |_ here <<entity_name>> -->Name of the CDS entity
 
 
+
 What is CDS table function?
 _____________________________
 - These are table functions that are implemented natively on the data base and this is called in CDS View.
@@ -88,6 +89,17 @@ When we create the CDS views, SAP has offered two types of Views.
 
 in SAP HANA, its an open sourcei.e we can change the standard program. but in ECC, it will ask for an access key, where as in s4 it an open source it won't ask any access key .
 but we need to follow the SAP standards only.
+
+Commentes in CDS View:
+______________________
+- for commentes we use '--'( double dash)
+Ex :
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+vbeln, -- sales order
+}
 
 CDS Views:
 ______________
@@ -300,3 +312,25 @@ Ex: concate_with_space(vkorg, concate_with_space(vtweg,spart,1), 1) as sales_Are
 sales_Area_space
 SGSS SG SS
 
+Concat with any special char: like -'|'/"@".. etc
+________________________________________________
+-- Concatenate happens right to left.
+
+Ex: vkorg@vtweg@spart
+@AbapCatalog.sqlViewName: 'ZSQLView_Table' // SE11- view
+@EndUserText.label: 'First CDS View'
+define view zvcdsview_with_one_table as select from vbak
+{
+key vbeln ,
+vkorg,
+vtweg,
+spart,
+concat(vkorg, concat(@,concat(vtweg,concat(@, spart)))) as sales_Area
+}
+
+Output:
+Sales_area
+_____________
+SGSS@SG@SS
+
+Can i write commands in se38 select query?--> if it is possible -->whatever commands which we are using in CDS View we can able to use that in direct select query --> SAP s4 HANA.
