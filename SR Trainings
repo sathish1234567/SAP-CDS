@@ -382,6 +382,40 @@ salesdoc--sorg--Dchl--Dv.. etc
 here: IDA will pull the data from DB and Display it in ALV and automatically create the field catalog.
 
 
+CAST- Function in cds view:
+_______________________________
+CAST( )- Convert the value to target type.
+
+
+
+Numeric Functions in THE CDS View:
+___________________________________
+ABS( val )- return the obsolute value 
+Ex: 
+-10  --- Absolute value 10
+ 10  --- Absolute value 10
+
+convert +ve to +ve
+        -ve to +ve
+
+CEIL( ):
+--it will convert to the next numeric number.
+Ex: 10.5 -- convert to the next numeric is 11.
+    10.2 -- convert to the next numeric is 11.
+
+DIV( )
+-- if you want to divide two values then go with DIV( ) function.
+-- it will provide the quotient value .<-- result is.
+
+div( 2, 2 ). --> 1
+
+mod( )
+-- it will do the divion and result will be remainder value.
+-- resultant value will be convert into the either preceding or next integer.
+
+
+
+
 
 
 
