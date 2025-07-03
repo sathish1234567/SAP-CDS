@@ -332,5 +332,27 @@ Output:
 Sales_area
 _____________
 SGSS@SG@SS
+in ABAP- Concat:
 https://youtu.be/5gqlD2D9FLw?list=PLnVjDuttPTAZyF3YrHfIV0UoOz_tLZ3DM&t=2272 
 Can i write commands in se38 select query?--> if it is possible -->whatever commands which we are using in CDS View we can able to use that in direct select query --> SAP s4 HANA.
+
+select from vbak
+       fields 
+       vbeln,
+       ernam,
+       erdat,
+       vkorg,
+       vtweg,
+       spart,
+       concat(vkorg, concat(vtweg, spart)) as sales_Area_no_spaces
+       concat(vkorg, concat(@,concat(vtweg,concat(@, spart)))) as sales_Area_@
+       into table @data(lt_vbak)
+       up  to 100 rows.
+output:
+_______
+sales_Area_@
+SGSS@SG@SS
+
+
+              
+
