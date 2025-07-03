@@ -373,6 +373,9 @@ data(go_alv) = cl_salv_gui_table_ida=>create_for_cds_view(
 data(go_fscreen) = go_alv->fullscreen( ).
 go_fscreen->display( ).
 
+or
+cl_salv_gui_table_ida=>create_for_cds_view('ZVCDSVIEW_WITH_ONE_TABLE')->fullscreen( )->disaply( ). " in single statement above code has written.
+
 output:
 ________
 salesdoc--sorg--Dchl--Dv.. etc
