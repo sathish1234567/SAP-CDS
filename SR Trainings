@@ -370,6 +370,17 @@ data(go_alv) = cl_salv_gui_table_ida=>create_for_cds_view(
                 exporting
                   iv_cds_View_name = 'ZVCDSVIEW_WITH_ONE_TABLE' ).
 
+data(go_fscreen) = go_alv->fullscreen( ).
+go_fscreen->display( ).
+
+output:
+________
+salesdoc--sorg--Dchl--Dv.. etc
+here: IDA will pull the data from DB and Display it in ALV and automatically create the field catalog.
+
+
+
+
 
               
 
