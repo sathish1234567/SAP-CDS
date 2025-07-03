@@ -413,6 +413,23 @@ mod( )
 -- it will do the divion and result will be remainder value.
 -- resultant value will be convert into the either preceding or next integer.
 
+division(var1, var2, <<how many decimals need in quotionet>>" ):
+-- division(18,4,3) - 18/4 = 2.500 - Quotioent will available upto 3 digits.
+
+round ( ):
+-- round the values upto given digits.
+
+Syntax:
+ABS( var1 )
+CEIL( arg1 )
+FLOOR( ARG1 )
+DIV( arg1, arg2 )
+DIVISON( arg1, arg2, <<number>>)
+MOD( arg1, arg2 )
+round( arg1, <<number>>)
+
+
+
 
 
 
