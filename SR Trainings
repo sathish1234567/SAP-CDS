@@ -353,6 +353,23 @@ _______
 sales_Area_@
 SGSS@SG@SS
 
+I want to use the CDS View in GUI ABAP-select.
+
+CDS View Name:  zvcdsview_with_one_table
+in report- Se38
+select * from zvcdsview_with_one_table
+         into table @data(lt_cdsdata).
+
+output
+_______
+vbeln-- vkorg--vtweg--spart
+
+or in alv grid:
+CDS View Name:  zvcdsview_with_one_table
+data(go_alv) = cl_salv_gui_table_ida=>create_for_cds_view(
+                exporting
+                  iv_cds_View_name = 'ZVCDSVIEW_WITH_ONE_TABLE' ).
+
 
               
 
