@@ -428,7 +428,13 @@ DIVISON( arg1, arg2, <<number>>)
 MOD( arg1, arg2 )
 round( arg1, <<number>>)
 
+CDS View:( data source ) :demo_expressions
+@AbapCatalog.sqlViewName: 'ZCDSNUMCDUNC'
+@EndUserText.label: 'Numeric Functions'
+define view ZCDSVIEW_NUMERICFUNC as select from demo_expressions
+{
 
+}
 
 
 
