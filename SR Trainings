@@ -1,4 +1,5 @@
 For RAP- Blog- Discovering in ABAP(Search in google)
+CTRL + 6 --> Open to the GUI screen from eclipse( short cut )
 CDS Views: 
 - Core data services
 - A view which we will creata a DB layer and in this we can perform all slicing of data and even we can also perform aggregations/ all conditional operator and what ever you want 
