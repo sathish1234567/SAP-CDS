@@ -1,0 +1,7 @@
+@AbapCatalog.sqlViewName : '<name>' -- > DDIC View Name
+@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory: #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.decFloat.outputStyle : #NORMAL
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label : '<text>'  --> for end user text- Headings
