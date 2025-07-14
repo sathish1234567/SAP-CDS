@@ -434,11 +434,21 @@ CDS View:( data source ) :demo_expressions
 @EndUserText.label: 'Numeric Functions'
 define view ZCDSVIEW_NUMERICFUNC as select from demo_expressions
 {
+abs( -10 ) as ABS1,
+ceil(-10.45) as ceil1,  -10.45 -10.44 -10.43 -10.42 -10.41.. -10... -9 ... -8 .. 0 .. 1.. 2... 3...
+                          -->    -->  -->             -->  -->  -->        -->  -->   -->
+ceil(10.45) as ceil2,
+div(2, 3) as div1,
+division(2, 3, 4) as division1,
 
 }
 
+output:
+abs1----ceil1----ceil2-----div1------division1-----
+10------ -10----- 11 ------ 0 -------  0.6667 -----
 
-
+in SAP GUI- SE38( Arthemetic operations
+_________________
 
 
 
