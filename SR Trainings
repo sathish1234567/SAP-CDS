@@ -366,6 +366,7 @@ _______
 vbeln-- vkorg--vtweg--spart
 
 or in alv grid:
+in ALV IDA- we can able to filter/pageing/sorting/text search
 CDS View Name:  zvcdsview_with_one_table
 data(go_alv) = cl_salv_gui_table_ida=>create_for_cds_view(
                 exporting
