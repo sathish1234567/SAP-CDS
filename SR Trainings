@@ -447,6 +447,7 @@ division(2, 3, 4) as division1,
 output:
 abs1----ceil1----ceil2-----div1------division1-----
 10------ -10----- 11 ------ 0 -------  0.6667 -----
+
 Joule AI - https://youtu.be/l-HfD5Yp7QE - Activation in BTP
 https://discovery-center.cloud.sap/missiondetail/4441/4727/?tab=projectboard - documentation
 ALV IDA url -https://youtu.be/jyLoSnHa0Vo (dev center)
@@ -454,8 +455,70 @@ ALV IDA url -https://youtu.be/jyLoSnHa0Vo (dev center)
 AgencyID
 @search.defaultSearchElement : true --> fiori- enabled the search column true
 
+mod operator in gui write statement: lv_val = 100 mod 4. write lv_val.
 in SAP GUI- SE38( Arthemetic operations
 _________________
+try.
+  select id, num1, num2, divison( num1, num2, 2) as divison,
+         mod( num1, num2 ) as mod,
+         abs( num1-num2 ) as abs
+         from demo_expressions
+         order by sum descending
+         into table @data( results ).
+catch cx_sy_open_sql_db.
+endtry.
+
+cl_demo_output=>display(
+exporting 
+    data = results ).
+output:
+_______
+
+Ex:
+data gv_vbeln type vbeln_va.
+select-options : s_vbeln for gv_vbeln.
+try.
+select from vbap
+       fields vbeln
+              sum( divison( kwmeng, lsmeng, 3 )) as tot_qty
+        where vbeln in @s_vbeln[]
+        group by vbeln
+        into table @data( gt_results ).
+cl_demo_output=>display( exporting data = gt_final ).
+catch cx_sy_open_sql_db.
+endtry.
+output:
+________
+in selection screen 1 and 2
+
+gt_results
+vbeln    tot_qty
+_____    _______
+1          1.0
+2          1.0
+group by: when using the group by what ever fields are picking those fields should use it in group by, except operation field- everything you need to pass.
+
+Ex:
+data gv_vbeln type vbeln_va.
+select-options : s_vbeln for gv_vbeln.
+try.
+select from vbap
+       fields vbeln
+             divison( sum( divison( kwmeng, lsmeng, 3 )), 3) as tot_qty
+        where vbeln in @s_vbeln[]
+        group by vbeln
+        into table @data( gt_results ).
+cl_demo_output=>display( exporting data = gt_final ).
+catch cx_sy_open_sql_db.
+endtry.
+output
+________
+gt_results
+vbeln    tot_qty
+_____    _______
+1          0.33
+
+
 
 
 
