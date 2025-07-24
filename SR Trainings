@@ -447,6 +447,12 @@ division(2, 3, 4) as division1,
 output:
 abs1----ceil1----ceil2-----div1------division1-----
 10------ -10----- 11 ------ 0 -------  0.6667 -----
+Joule AI - https://youtu.be/l-HfD5Yp7QE - Activation in BTP
+https://discovery-center.cloud.sap/missiondetail/4441/4727/?tab=projectboard - documentation
+ALV IDA url -https://youtu.be/jyLoSnHa0Vo (dev center)
+@UI:{ selectionField:[{ poisition : 20 }] } --> label position at fiori - like field catalog
+AgencyID
+@search.defaultSearchElement : true --> fiori- enabled the search column true
 
 in SAP GUI- SE38( Arthemetic operations
 _________________
