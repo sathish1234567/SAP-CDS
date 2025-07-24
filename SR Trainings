@@ -504,7 +504,7 @@ select-options : s_vbeln for gv_vbeln.
 try.
 select from vbap
        fields vbeln
-             divison( sum( divison( kwmeng, lsmeng, 3 )), 3) as tot_qty
+             divison( sum( divison( kwmeng, lsmeng, 3 )), 3, 3) as tot_qty
         where vbeln in @s_vbeln[]
         group by vbeln
         into table @data( gt_results ).
@@ -518,6 +518,11 @@ vbeln    tot_qty
 _____    _______
 1          0.33
 
+note: 
+Don't need write the cds view until and unless if you are going to use that at multiple places.
+in cds view we can't able to use the order by in select statement.
+
+https://youtu.be/n_QZCdwrQMs?list=PLnVjDuttPTAZyF3YrHfIV0UoOz_tLZ3DM&t=2278
 
 
 
