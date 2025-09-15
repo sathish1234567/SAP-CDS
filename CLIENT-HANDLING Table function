@@ -1,0 +1,13 @@
+Client Handling AMDP/TF:
+
+previous: depricated/remove the client params
+with parameters
+@Environment.systemField : #CLIENT
+p_clnt :abap.clnt
+
+Now:
+@ClientHandling : {
+type: #client_dependent,
+clientsafe: true,
+algorithem : #SESSION_VARIABLE
+}
