@@ -1,0 +1,30 @@
+define root view entity <<entity name>>
+as projection on <data source> as <alias>
+{
+
+ key TravelId,
+      // f4 help-1
+      @Consumption.valueHelpDefinition: [{
+          entity: {
+              name: '/DMO/I_Agency',
+              element: 'AgencyID'
+          }}]
+      @ObjectModel.text.element: ['AgencyName']
+      @Search.defaultSearchElement: true
+      AgencyId,
+      _Agency.Name        as AgencyName,
+
+      // f4 help-2
+      @Consumption.valueHelpDefinition: [{
+               entity: {
+                   name: '/DMO/I_Customer',
+                   element: 'CustomerID'
+               }}]
+      @ObjectModel.text.element: ['CustomerName']
+      @Search.defaultSearchElement: true
+
+      CustomerId,
+      _Customer.FirstName as CustomerName
+
+
+}
