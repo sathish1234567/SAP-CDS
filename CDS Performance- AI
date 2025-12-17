@@ -1,0 +1,17 @@
+CDS Performance AI:
+
+CDS performance tuning in ABAP focuses on maximizing code pushdown to the database and leveraging the SAP HANA optimizer using specific design principles and analysis tools. 
+Design Principle:
+VDM Layering Structure views into Foundation, Building Block, and Consumption layers to promote reusability and modularity, avoiding overly deep view stacks (more than 10-15 layers).
+Selective Retrieval:
+Explicitly select only necessary fields and apply filters (using WHERE clauses and parameters) as early and low as possible in the view hierarchy to reduce the dataset size.
+Optimize Joins and Associations:
+Use inner joins where appropriate, define cardinality accurately to help the database optimizer, and include all shared fields in the ON clause for faster performance. Avoid unnecessary outer joins.
+Perform Calculations Efficiently :
+Execute expensive operations and aggregations after data reduction through filtering. Use CDS Table Functions (AMDP) for complex, procedural logic that must run on the database.
+Utilize Annotations:
+Employ annotations like @AbapCatalog.buffering for frequently accessed master data and @ObjectModel.usageType to provide hints to the optimizer about the view's primary use case (transactional, analytical, or search).
+Avoid Anti-Patterns :
+Minimize the use of complex CASE statements within views and resist the urge to recreate complex ABAP loops in CDS expressions.
+Use Analysis Tools:
+For performance analysis, use ABAP Development Tools (ADT) in Eclipse for the Dependency Analyzer and Data Preview. For deeper database-level analysis, use the SQL Trace (ST05 or ST12) and the HANA Plan Visualizer (PlanViz) to understand the query execution plan. 
