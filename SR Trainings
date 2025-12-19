@@ -518,12 +518,20 @@ vbeln    tot_qty
 _____    _______
 1          0.33
 
+Ex: in abap sql
+abs( divison( sum( divison( kwmeng, lsmeng, 3 )), 3, 3) as tot_qty ) as absvl.
+
 note: 
 Don't need write the cds view until and unless if you are going to use that at multiple places.
-in cds view we can't able to use the order by in select statement.
+****in cds view we can't able to use the order by in select statement.
+****in cds view, when using aggregation group by cause needed otherwise through the error.
 
 https://youtu.be/n_QZCdwrQMs?list=PLnVjDuttPTAZyF3YrHfIV0UoOz_tLZ3DM&t=2278
 
+Order by CDS View not possible:
+Ex:
+CDS Name: ZCDS_8AM_2 
+Sql VIew name : ZCDS8AM2
 
 
 
