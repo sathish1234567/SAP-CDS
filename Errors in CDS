@@ -7,3 +7,7 @@ here we are getting error as -Annotation Semantics.currencyCode is not allowed i
     currency_code,
 
 Solution:
+
+Q: How to connect BTP-Cloud ABAP system in Trail version Destinations.?
+
+-Activated ABAP system in boosters, --> Created CDS View, added UI annotations --> Created Service Definition and Binding -->Now i want to Fiori elements Application IN BAS.
