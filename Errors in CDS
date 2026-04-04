@@ -1,0 +1,9 @@
+Errors: 
+Q: Created the cds view and added the UI annotations in same view entity and later added the currecny code and amount and also used the currency related semantic annotations.
+here we are getting error as -Annotation Semantics.currencyCode is not allowed in view entities.
+
+@UI.lineItem: [{ position: 30, label: 'CurrencyCode' }]    
+@Semantics.currencyCode: true
+    currency_code,
+
+Solution:
