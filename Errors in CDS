@@ -10,4 +10,5 @@ Solution:
 
 Q: How to connect BTP-Cloud ABAP system in Trail version Destinations.?
 
--Activated ABAP system in boosters, --> Created CDS View, added UI annotations --> Created Service Definition and Binding -->Now i want to Fiori elements Application IN BAS.
+-Activated ABAP system in boosters, --> Created CDS View, added UI annotations --> Created Service Definition and Binding -->Now i want to Create Fiori elements Application IN BAS.
+--> but here i ma getting the unable to connect the system to backend system..
